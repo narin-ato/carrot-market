@@ -1,34 +1,25 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main className="bg-gray-300 h-screen flex items-center justify-center p-5 sm:bg-red-100 md:bg-green-100 lg:bg-cyan-100 xl:bg-orange-100 2xl:bg-purple-100">
-      <div className="bg-white shadow-lg p-5 rounded-3xl w-full max-w-screen-sm flex flex-col">
-        {["Nico", "Me", "You"].map((person, index) => (
-          <div key={index} className="flex items-center gap-5">
-            <div />
-            <span>{person}</span>
-            <div>
-              <span>{index}</span>
-            </div>
-          </div>
-        ))}
+    <div className="flex flex-col items-center justify-between min-h-screen p-8">
+      <div className="my-auto flex flex-col gap-2 items-center *:font-medium">
+        <span className="text-9xl">🥕</span>
+        <h1 className="text-4xl">당근</h1>
+        <h2 className="text-2xl">당근 마켓에 어서오세요!</h2>
       </div>
-    </main>
-
-    // <main className="bg-gray-300 h-screen flex items-center justify-center p-5 sm:bg-red-100 md:bg-green-100 lg:bg-cyan-100 xl:bg-orange-100 2xl:bg-purple-100">
-    //   <div className="bg-white shadow-lg p-5 rounded-3xl w-full max-w-screen-sm flex flex-col md:flex-row gap-2 *:outline-none *:md:text-red-100 has-[:invalid]:ring-red-100 has-[:invalid]:ring ring ring-transparent transition-shadow">
-    //     <input
-    //       className="w-full rounded-full h-10 bg-gray-200 pl-5 ring ring-transparent focus:ring-green-500 focus:ring-offset-2 transition-shadow  invalid:focus:ring-red-500 peer"
-    //       type="text"
-    //       placeholder="Email address"
-    //       required
-    //     />
-    //     <span className="text-red-500 font-medium hidden peer-invalid:block">
-    //       Email is required
-    //     </span>
-    //     <button className="text-white py-2 rounded-full active:scale-90 focus:scale-90 transition-transform font-medium md:px-10 bg-black peer-[:invalid]:bg-red-200">
-    //       Log in
-    //     </button>
-    //   </div>
-    // </main>
+      <div className="flex flex-col items-center gap-3 w-full">
+        <Link
+          href="/create-account"
+          className="primary-btn text-lg py-2.5"
+        >
+          시작하기
+        </Link>
+        <div className="flex gap-2">
+          <span>이미 계정이 있나요?</span>
+          <Link href="/login" className="hover:underline hover:underline-offset-3">로그인</Link>
+        </div>
+      </div>
+    </div>
   );
 }
