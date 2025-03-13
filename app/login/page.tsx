@@ -5,10 +5,11 @@ import FormButton from "@/components/button";
 import SocialLogin from "@/components/\bsocial-login";
 import { redirect } from "next/dist/server/api-utils";
 import { useActionState } from "react";
-import { handleForm } from "./action";
+import { login } from "./action";
+import { PASSWORD_MIN_LENGTH } from "@/lib/constants";
 
 export default function LogIn() {
-  const [state, action] = useActionState(handleForm, null);
+  const [state, action] = useActionState(login, null);
 
   return (
     <div className="flex flex-col gap-10 py-8 px-6">
@@ -22,14 +23,15 @@ export default function LogIn() {
           type="email"
           placeholder="Email"
           required
-          errors={[]}
+          errors={state?.fieldErrors.email ?? []}
         />
         <FormInput
           name="password"
           type="password"
           placeholder="Password"
           required
-          errors={state?.errors ?? []}
+          minLength={PASSWORD_MIN_LENGTH}
+          errors={state?.fieldErrors.password ?? []}
         />
         <FormButton text="Log in" />
       </form>
